@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1>Paso de valores en PHP</h1>
-  <h2>Dará errores a menos que "nombre" y "apellido" tengan algún valor.</h2>
+  <p>Dará errores a menos que "nombre" y "apellido" tengan algún valor.</p>
   <?php echo $_GET['nombre']; ?>
   <?php echo $_GET['apellido']; ?>
 </body>
