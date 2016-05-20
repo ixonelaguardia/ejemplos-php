@@ -43,6 +43,32 @@
             echo "No se ha borrado ninguna entrada.";
         echo "</p>";
     }
+/**  Cuando del formulario de del la página ejer08_editar le dan a modificar, vuelve a está página
+     y en la url tendremos todos los datos
+    ejer08.php?titulo=Segundo+post&texto=aaa&fecha=2016-05-20+20%3A15%3A19&activo=on&enviar=Modificar*/
+
+    // Update si enivar=modificar
+  /**  if (isset($_GET['enviar'])){
+
+            // comprobamos el campo checkbox
+            $activo = 0;
+            if (isset($_GET['activo'])) {
+                $activo = 1;
+            }
+
+            $q_update = "update entrada set titulo='" . $_GET['titulo'] .
+                "', texto='" . $_GET['texto'] .
+                "', fecha='" . $_GET['fecha'] .
+                "', activo= '" . $activo . "' where id=" . $id;
+
+            // Ejecutar la consulta en la conexión abierta y obtener el "resultset" o abortar y mostrar el error
+            $r_update = mysqli_query($conexion, $q_update) or die(mysqli_error($conexion));
+
+
+    }*/
+
+
+
 
     // Formar la consulta (seleccionando todas las filas)
     $q = "select * from entrada";
@@ -65,8 +91,8 @@
             echo "<td>" . $fila['texto'] . "</td>";
             echo "<td>" . $fila['fecha'] . "</td>";
             echo "<td>" . $fila['activo'] . "</td>";
-            $href = "ejer08_editar.php?id=".$_fila['id'];
-            echo "<td><a href= $href>Editar</a></td>";
+          // $href = "ejer08_editar.php?id=".$_fila['id'];
+            echo "<td><a href='ejer08_editar.php?id=".$fila['id']."'>Editar</a></td>";
             echo "</tr>";
         }
 
@@ -80,7 +106,7 @@ mysqli_close($conexion);
 ?>
 
 
-<p><a class="blue" href="ejer08.php.php">Recargar la página</a></p>
+<p><a class="blue" href="ejer08.php">Recargar la página</a></p>
 
 
 </html>
