@@ -13,5 +13,20 @@
   <p>Recoger dos valores A y B, mostrando un mensaje diciendo cual de ellos es mayor que el otro.</p>
   <p>Habrá que llamarlo así: /ejer01.php?A=7&B=3</p>
   <p>Dará errores a menos que "A" y "B" tengan algún valor.</p>
+
+  <?php
+  $a = $_GET['A'];
+  $b = $_GET['B'];
+
+  if ($a > $b){
+    echo "<p>" . $a . " es mayor que " . $b . "</p>";
+  }elseif ($a < $b){
+    echo "<p>" . $b . " es mayor que " . $a . "</p>";
+  }else{
+    echo "<p>Los dos son iguales</p>";
+  }
+?>
+
+
 </body>
 </html>

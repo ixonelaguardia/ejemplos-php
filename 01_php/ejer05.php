@@ -18,10 +18,45 @@
 
   <h2>El formulario</h2>
   <form action="ejer05.php" method="get">
+    <label for="N">Numero:</label>
     <input type="text" id="N" name="N" value=""/>
+    <label for="I">Límite inferior:</label>
     <input type="text" id="I" name="I" value=""/>
+    <label for="F">Límite superior:</label>
     <input type="text" id="F" name="F" value=""/>
     <input type="submit" id="enviar" name="enviar" value="Enviar"/>
   </form>
 </body>
+<?php
+  if (isset($_GET['enviar'])){
+    $n = $_GET['N'];
+    $i = $_GET['I'];
+    if (empty($i)){
+        $i = 1;
+      echo $i;
+    }
+    $f = $_GET['F'];
+    if (empty($f)) {
+      $f = 10;
+      echo $f;
+    }
+    if ($f < $i){
+      $aux = $i;
+      $i = $f;
+      $f = $aux;
+    }
+
+    if (!empty($n)){
+      echo "<p>Tabla de multiplicar del " .$n . ".</p>";
+      echo '<table border="1">';
+      echo '<tr><th>'.$n.' x</th><th>=</th></tr>';
+      for ($x=$i; $x<=$f; $x++){
+        echo "<tr>";
+        echo "<td>" . $x . "</td>";
+        echo "<td>" . $x * $n . "</td>";
+        echo "</tr>";
+      }
+    }
+  }
+?>
 </html>

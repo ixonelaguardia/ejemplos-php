@@ -19,5 +19,19 @@
     <input type="text" id="N" name="N" value=""/>
     <input type="submit" id="enviar" name="enviar" value="Enviar"/>
   </form>
+  <?php
+  $n = $_GET['N'];
+  if (!empty($n)){
+    echo "<p>Tabla de multiplicar del " .$n . ".</p>";
+    echo '<table border="1">';
+    echo '<tr><th>'.$n.' x</th><th>=</th></tr>';
+    for ($i=1; $i<=10; $i++){
+        echo "<tr>";
+        echo "<td>" . $i . "</td>";
+        echo "<td>" . $i * $n . "</td>";
+        echo "</tr>";
+    }
+  }
+  ?>
 </body>
 </html>

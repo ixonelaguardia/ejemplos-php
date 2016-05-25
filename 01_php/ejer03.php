@@ -19,5 +19,17 @@
     <input type="text" id="N" name="N" value=""/>
     <input type="submit" id="enviar" name="enviar" value="Enviar"/>
   </form>
+  <?php
+  if (isset($_GET['enviar'])) {
+    $n = $_GET['N'];
+    if (!empty($n)) {
+      echo "<ul>";
+      for ($i = 1; $i <=$n; $i++){
+        echo "<li>Elemento " . $i ."</li>";
+      }
+      echo "</ul>";
+      }
+  }
+  ?>
 </body>
 </html>
