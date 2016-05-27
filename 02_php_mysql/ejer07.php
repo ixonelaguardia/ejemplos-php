@@ -4,50 +4,64 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Curso de PHP | mayo de 2016 | ejer07.php</title>
-  <link rel="stylesheet" href="../css/normalize.css">
+<!--  <link rel="stylesheet" href="../css/normalize.css">
   <link rel="stylesheet" href="../css/colors.css">
-  <link rel="stylesheet" href="../css/ejemplos.css">
+  <link rel="stylesheet" href="../css/ejemplos.css"> -->
+  <!-- Bootstrap Core CSS -->
+  <?php
+  include("../inc/inc_css.php");
+  ?>
 </head>
 <body>
-  <h1>Ejercicio 7</h1>
-  <p>Modificar el ejemplo 19 para que muestre sólo aquellas entradas que esten activas.</p>
-  <p>Además, queremos se se muestren ordenadas por fecha, apareciendo primero las más nuevas.</p>
-  <p>Como bonus, se plantea que sólo se muestren las 10 últimas entradas.</p>
-
   <?php
-  // Abrir la conexión
-  $conexion = mysqli_connect("localhost", "root", "root", "blog");
+  include("../inc/inc_header.php");
+  include("../inc/abrir_body.php");
+  ?>
 
-  // Formar la consulta (seleccionando todas las filas)
-  $q = "select * from entrada";
-//  $q = "select * from entrada where activo=1";
-  // Ejecutar la consulta en la conexión abierta y obtener el "resultset" o abortar y mostrar el error
-  $r = mysqli_query($conexion, $q) or die(mysqli_error($conexion));
 
-  // Calcular el número de filas
-  $total = mysqli_num_rows($r);
+    <h1>Ejercicio 7</h1>
+    <p>Modificar el ejemplo 19 para que muestre sólo aquellas entradas que esten activas.</p>
+    <p>Además, queremos se se muestren ordenadas por fecha, apareciendo primero las más nuevas.</p>
+    <p>Como bonus, se plantea que sólo se muestren las 10 últimas entradas.</p>
 
-  // Mostrar el contenido de las filas, creando una tabla XHTML
-  if ($total > 0) {
-    echo '<table border="1">';
-    echo '<tr><th>Título</th><th>Texto</th><th>Fecha</th><th>Activo</th></tr>';
+    <?php
+    // Abrir la conexión
+    $conexion = mysqli_connect("localhost", "root", "root", "blog");
 
-    while ($fila = mysqli_fetch_assoc($r)) {
-      if ($fila['activo'] == 1) {
-        echo "<tr>";
-        echo "<td>" . $fila['titulo'] . "</td>";
-        echo "<td>" . $fila['texto'] . "</td>";
-        echo "<td>" . $fila['fecha'] . "</td>";
-        echo "<td>" . $fila['activo'] . "</td>";
-        echo "</tr>";
-     }
+    // Formar la consulta (seleccionando todas las filas)
+    $q = "select * from entrada";
+  //  $q = "select * from entrada where activo=1";
+    // Ejecutar la consulta en la conexión abierta y obtener el "resultset" o abortar y mostrar el error
+    $r = mysqli_query($conexion, $q) or die(mysqli_error($conexion));
+
+    // Calcular el número de filas
+    $total = mysqli_num_rows($r);
+
+    // Mostrar el contenido de las filas, creando una tabla XHTML
+    if ($total > 0) {
+      echo '<table border="1">';
+      echo '<tr><th>Título</th><th>Texto</th><th>Fecha</th><th>Activo</th></tr>';
+
+      while ($fila = mysqli_fetch_assoc($r)) {
+        if ($fila['activo'] == 1) {
+          echo "<tr>";
+          echo "<td>" . $fila['titulo'] . "</td>";
+          echo "<td>" . $fila['texto'] . "</td>";
+          echo "<td>" . $fila['fecha'] . "</td>";
+          echo "<td>" . $fila['activo'] . "</td>";
+          echo "</tr>";
+       }
+      }
+
+      echo '</table>';
     }
 
-    echo '</table>';
-  }
+    // Cerrar la conexión
+    mysqli_close($conexion);
 
-  // Cerrar la conexión
-  mysqli_close($conexion);
-  ?>
+    include ("../inc/inc_footer.php");
+    include ("../inc/inc_scripts.php");
+    ?>
+
 </body>
 </html>

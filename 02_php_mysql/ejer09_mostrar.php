@@ -4,12 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Curso de PHP | mayo de 2016 | ejer08.php</title>
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/colors.css">
-    <link rel="stylesheet" href="../css/ejemplos.css">
+    <?php
+    include("../inc/inc_css.php");
+    ?>
 </head>
 <body>
-<h1>Visualizar y añadir comentarios</h1>
+<?php
+include("../inc/inc_header.php");
+include("../inc/abrir_body.php");
+?>
+
+<h1 >Visualizar y añadir comentarios</h1>
 <?php
     // Abrir la conexión
     $conexion = mysqli_connect("localhost", "root", "root", "blog");
@@ -123,6 +128,9 @@
 
         // Cerrar la conexión
         mysqli_close($conexion);
+
+include ("../inc/inc_footer.php");
+include ("../inc/inc_scripts.php");
 ?>
 
 </body>

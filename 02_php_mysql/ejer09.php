@@ -4,11 +4,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Curso de PHP | mayo de 2016 | ejer09.php</title>
-  <link rel="stylesheet" href="../css/normalize.css">
-  <link rel="stylesheet" href="../css/colors.css">
-  <link rel="stylesheet" href="../css/ejemplos.css">
+  <?php
+  include("../inc/inc_css.php");
+  ?>
 </head>
 <body>
+<?php
+include("../inc/inc_header.php");
+include("../inc/abrir_body.php");
+?>
+
   <h1>Ejercicio 9</h1>
   <p>Partiendo del ejemplo 21, hacer que muestre también los comentarios asociados a cada entrada.</p>
   <p>Cuando se pinche en el título de una entrada, debería mostrarse otra página con el contenido de la misma y todos
@@ -98,6 +103,9 @@
 
   // Cerrar la conexión
   mysqli_close($conexion);
+
+  include ("../inc/inc_footer.php");
+  include ("../inc/inc_scripts.php");
   ?>
   <p><a class="blue" href="ejemplo21.php">Recargar la página</a></p>
 

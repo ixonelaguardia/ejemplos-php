@@ -4,11 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Curso de PHP | mayo de 2016 | ejer08.php</title>
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/colors.css">
-    <link rel="stylesheet" href="../css/ejemplos.css">
+    <?php
+    include("../inc/inc_css.php");
+    ?>
 </head>
 <body>
+<?php
+include("../inc/inc_header.php");
+include("../inc/abrir_body.php");
+?>
+
 <h1>Modificar post</h1>
 
 
@@ -106,6 +111,8 @@ if (isset($_GET['enviar'])){
 //cerrar conexion
 mysqli_close($conexion);
 
+include ("../inc/inc_footer.php");
+include ("../inc/inc_scripts.php");
 ?>
 
 

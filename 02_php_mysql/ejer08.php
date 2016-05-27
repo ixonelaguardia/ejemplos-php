@@ -4,11 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Curso de PHP | mayo de 2016 | ejer08.php</title>
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/colors.css">
-    <link rel="stylesheet" href="../css/ejemplos.css">
+    <?php
+    include("../inc/inc_css.php");
+    ?>
 </head>
 <body>
+<?php
+include("../inc/inc_header.php");
+include("../inc/abrir_body.php");
+?>
+
 <h1>Ejercicio 8</h1>
 
 <p>Modificar el ejemplo 21 para que además de borrar, nos permita modifica una entrada ya existente.</p>
@@ -43,32 +48,6 @@
             echo "No se ha borrado ninguna entrada.";
         echo "</p>";
     }
-/**  Cuando del formulario de del la página ejer08_editar le dan a modificar, vuelve a está página
-     y en la url tendremos todos los datos
-    ejer08.php?titulo=Segundo+post&texto=aaa&fecha=2016-05-20+20%3A15%3A19&activo=on&enviar=Modificar*/
-
-    // Update si enivar=modificar
-  /**  if (isset($_GET['enviar'])){
-
-            // comprobamos el campo checkbox
-            $activo = 0;
-            if (isset($_GET['activo'])) {
-                $activo = 1;
-            }
-
-            $q_update = "update entrada set titulo='" . $_GET['titulo'] .
-                "', texto='" . $_GET['texto'] .
-                "', fecha='" . $_GET['fecha'] .
-                "', activo= '" . $activo . "' where id=" . $id;
-
-            // Ejecutar la consulta en la conexión abierta y obtener el "resultset" o abortar y mostrar el error
-            $r_update = mysqli_query($conexion, $q_update) or die(mysqli_error($conexion));
-
-
-    }*/
-
-
-
 
     // Formar la consulta (seleccionando todas las filas)
     $q = "select * from entrada";
@@ -103,6 +82,9 @@
 <?php
 // Cerrar la conexión
 mysqli_close($conexion);
+
+include ("../inc/inc_footer.php");
+include ("../inc/inc_scripts.php");
 ?>
 
 
