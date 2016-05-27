@@ -73,20 +73,24 @@
       $q1 = "select email, texto from comentario where entrada_id= ".$fila['id'];
       $r1 = mysqli_query($conexion,$q1) or die(mysqli_error($conexion));
       $total1 = mysqli_num_rows($r1);
-
+      $cont = 1;
       if ($total > 0) {
-        while ($fila1 = mysqli_fetch_assoc($r1)) {
-          echo "<td>" . $fila1['texto'] . "</td>";
-          echo "<td>" . $fila1['email'] . "</td>";
-          echo "</tr>";
-          echo "<td></td>";
-          echo "<td></td>";
-          echo "<td></td>";
-          echo "<td></td>";
-          echo "<td></td>";
+        while ($fila1 = mysqli_fetch_assoc($r1)){
+          if ($cont == 1) {
+            echo "<td >" . $fila1['texto'] . "</td>";
+            echo "<td>" . $fila1['email'] . "</td>";
+            echo "</tr>";
+          }else{
+            echo "<tr>";
+            echo "<td colspan='5'>";
+            echo "<td >" . $fila1['texto'] . "</td>";
+            echo "<td>" . $fila1['email'] . "</td>";
+            echo "</tr>";
+      }
+      $cont = $cont + 1;
         }
       }
-      echo "</tr>";
+
     }
 
     echo '</table>';
